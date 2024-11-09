@@ -38,13 +38,13 @@ runs:
       uses: actions/download-artifact@v4
       with:
         name: ${{ inputs.input-artifact }}
-        path: ${{ github.workspace }}
+        path: ${{ github.workspace }}/${{ inputs.input-artifact }}
 
     - name: "Image generation"
       shell: bash
       run: |
         ls ${{ github.workspace }}/${{ inputs.input-artifact }}
-        cat ${{ github.workspace }}/${{ inputs.input-artifact }}
+        cat ${{ github.workspace }}/${{ inputs.input-artifact }}//${{ inputs.prompt-file }}
         #python3 main.py ${{ github.workspace }}/${{ inputs.input-artifact }}/${{ inputs.prompt-file }}
       env:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
