@@ -1,6 +1,6 @@
 name: "OpenAI GPT"
 inputs:
-  prompt-artifact: 
+  input-artifact: 
     description: "Prompt para generar imagen"
     required: true
     type: string
@@ -37,14 +37,14 @@ runs:
     - name: "Get prompt"
       uses: actions/download-artifact@v4
       with:
-        name: ${{ inputs.prompt-artifact }}
-        path: ${{ github.workspace }}/${{ inputs.prompt-artifact }}
+        name: ${{ inputs.input-artifact }}
+        path: ${{ github.workspace }}/${{ inputs.input-artifact }}
 
     - name: "Image generation"
       shell: bash
       run: |
-        cat ${{ github.workspace }}/${{ inputs.prompt-artifact }}
-        #python3 main.py ${{ github.workspace }}/${{ inputs.prompt-artifact }}/${{ inputs.prompt-file }}
+        cat ${{ github.workspace }}/${{ inputs.input-artifact }}
+        #python3 main.py ${{ github.workspace }}/${{ inputs.input-artifact }}/${{ inputs.prompt-file }}
       env:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
       
