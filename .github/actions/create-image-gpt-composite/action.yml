@@ -1,0 +1,51 @@
+name: "OpenAI GPT"
+inputs:
+  prompt-artifact: 
+    description: "Prompt para generar imagen"
+    required: true
+    type: string
+  prompt-file: 
+    description: "archivo de prompt"
+    required: true
+    type: string
+  GH_TOKEN:
+    required: true
+    type: string
+  OPENAI_API_KEY:
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: "Clone Gemini repository"
+      shell: bash
+      run: git clone https://${{ env.GH_TOKEN }}@github.com/Drastyn/create-image-gpt.git
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
+
+    - name: "Set up Python"
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: "Install requirements"
+      shell: bash
+      run: pip install -r gemini/requirements.txt
+
+    - name: "Get prompt"
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.prompt-artifact }}
+        path: ${{ github.workspace }}/${{ inputs.prompt-artifact }}
+
+    - name: "Image generation"
+      shell: bash
+      run: |
+        cat ${{ github.workspace }}/${{ inputs.prompt-artifact }}
+        #python3 main.py ${{ github.workspace }}/${{ inputs.prompt-artifact }}/${{ inputs.prompt-file }}
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY: }}
+      
+      
