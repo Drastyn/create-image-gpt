@@ -1,9 +1,6 @@
 from openai import OpenAI
 from os import path
 import sys, subprocess
-from dotenv import load_dotenv
-
-load_dotenv()
 
 client = OpenAI()
 
@@ -35,5 +32,6 @@ def checkInput(arguments):
     else:
         prompt = arguments[1]
     return prompt
+
 
 main()
