@@ -46,6 +46,6 @@ runs:
         cat ${{ github.workspace }}/${{ inputs.prompt-artifact }}
         #python3 main.py ${{ github.workspace }}/${{ inputs.prompt-artifact }}/${{ inputs.prompt-file }}
       env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY: }}
+        OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY: }}
       
       
