@@ -38,7 +38,7 @@ runs:
       uses: actions/download-artifact@v4
       with:
         name: ${{ inputs.input-artifact }}
-        path: ${{ github.workspace }}/${{ inputs.input-artifact }}
+        path: ${{ github.workspace }}
 
     - name: "Image generation"
       shell: bash
