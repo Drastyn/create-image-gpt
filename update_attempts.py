@@ -11,6 +11,7 @@ HEADERS = {
 
 def main():
   current_attempts = requests.get(f"{GH_URL} ", headers=HEADERS).json()['value']
-  print(current_attempts)
+  new_attempts = int(current_attempts) + 1
+  print(new_attempts)
 
 main()
