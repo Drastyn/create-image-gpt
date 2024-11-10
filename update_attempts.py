@@ -10,7 +10,7 @@ HEADERS = {
 }
 
 def main():
-  current_attempts = requests.get(f"{GH_URL} ", HEADERS=headers)
+  current_attempts = requests.get(f"{GH_URL} ", headers=HEADERS)
   print(current_attempts)
 
 main()
