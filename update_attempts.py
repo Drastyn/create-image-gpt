@@ -10,8 +10,10 @@ HEADERS = {
     "X-GitHub-Api-Version": "2022-11-28"
 }
 
+
 def main():
   new_attempts = int(ATTEMPTS) + 1
   requests.patch(GH_URL, headers=HEADERS, json={ "name":"ATTEMPTS", "value": str(new_attempts) })
+
 
 main()
