@@ -12,6 +12,6 @@ HEADERS = {
 def main():
   current_attempts = requests.get(GH_URL, headers=HEADERS).json()['value']
   new_attempts = int(current_attempts) + 1
-  requests.patch(GH_URL, headers=HEADERS, data={ "name":"ATTEMPTS", "value": str(new_attempts) })
+  requests.patch(GH_URL, headers=HEADERS, json={ "name":"ATTEMPTS", "value": str(new_attempts) })
 
 main()
