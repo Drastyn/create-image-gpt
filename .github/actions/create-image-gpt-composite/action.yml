@@ -14,7 +14,11 @@ inputs:
   OPENAI_API_KEY:
     required: true
     type: string
+ ATTEMPTS:
+   required: true
+   type: string
 
+    
 runs:
   using: "composite"
   steps:
@@ -60,4 +64,5 @@ runs:
       run: python3 create-image-gpt/update_attempts.py
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      
+        ATTEMPTS: ${{ inputs.ATTEMPTS }}
+ 
