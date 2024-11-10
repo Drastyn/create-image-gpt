@@ -2,7 +2,7 @@ import requests
 from os import getenv
 
 GH_TOKEN = getenv("GH_TOKEN")
-CURRENT_ATTEMPTS = getenv("ATTEMPTS")
+ATTEMPTS = getenv("ATTEMPTS")
 GH_URL = "https://api.github.com/repos/Drastyn/curso-prompt-coderhouse/actions/variables/ATTEMPTS"
 HEADERS = {
     "Accept": "application/vnd.github+json",
