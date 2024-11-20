@@ -1,13 +1,14 @@
 from openai import OpenAI
-from os import path
+from os import path, getenv
 import sys, subprocess
 
 client = OpenAI()
+IMAGE_NAME = getenv("IMAGE_NAME")
 
 def main():
     prompt = checkInput(sys.argv)
     image  = create_image(prompt).data[0].url
-    subprocess.run(f"curl \"{image}\" -o desing.png", shell="True")
+    subprocess.run(f"curl \"{image}\" -o {IMAGE_NAME}.png", shell="True")
 
 
 def create_image(prompt):
