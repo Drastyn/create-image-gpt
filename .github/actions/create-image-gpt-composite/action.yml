@@ -8,6 +8,9 @@ inputs:
     description: "archivo de prompt"
     required: true
     type: string
+  image-name:
+    required: true
+    type: string
   GH_TOKEN:
     required: true
     type: string
@@ -55,17 +58,14 @@ runs:
       run: |
         prompt=$(cat ${{ github.workspace }}/${{ inputs.input-artifact }}/${{ inputs.prompt-file }})
         python3 create-image-gpt/main.py "$prompt"
-        ls 
-        pwd
-        cd create-image-gpt
-        ls
       env:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
+        IMAGE_NAME: ${{ inputs.image-name }}
 
     - name: "Upload image"
       uses: actions/upload-artifact@v4
       with:
-        name: desing-created
+        name: ${{ inputs.output-artifact }}
         path: ${{ github.workspace }}/desing.png
         retention-days: 1
 
