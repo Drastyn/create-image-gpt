@@ -54,8 +54,7 @@ runs:
       shell: bash
       run: |
         prompt=$(cat ${{ github.workspace }}/${{ inputs.input-artifact }}/${{ inputs.prompt-file }})
-        echo $prompt
-        #python3 create-image-gpt/main.py ${{ github.workspace }}/${{ inputs.input-artifact }}/${{ inputs.prompt-file }}
+        #python3 create-image-gpt/main.py "$prompt"
       env:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
 
