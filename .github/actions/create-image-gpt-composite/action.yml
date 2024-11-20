@@ -58,6 +58,13 @@ runs:
       env:
         OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
 
+    - name: "Upload image"
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.output-artifact }}
+        path: ${{ github.workspace }}/create-image-gpt/desing.png
+        retention-days: 1
+
     - name: "Update attempts"
       shell: bash
       run: python3 create-image-gpt/update_attempts.py
