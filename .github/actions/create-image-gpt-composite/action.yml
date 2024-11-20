@@ -8,6 +8,9 @@ inputs:
     description: "archivo de prompt"
     required: true
     type: string
+  ouput-artifact:
+    required: true
+    type: string
   image-name:
     required: true
     type: string
