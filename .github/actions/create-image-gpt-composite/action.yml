@@ -68,7 +68,7 @@ runs:
     - name: "Upload image"
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.output-artifact }}
+        name: ${{ inputs.ouput-artifact }}
         path: ${{ github.workspace }}/${{ inputs.image-name }}.png
         retention-days: 1
 
