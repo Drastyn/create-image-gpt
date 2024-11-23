@@ -6,7 +6,7 @@ client = OpenAI()
 IMAGE_NAME = getenv("IMAGE_NAME")
 
 def main():
-    prompt = checkInput(sys.argv)
+    prompt = check_input(sys.argv)
     image  = create_image(prompt).data[0].url
     subprocess.run(f"curl \"{image}\" -o {IMAGE_NAME}.png", shell="True")
 
@@ -22,7 +22,7 @@ def create_image(prompt):
     return response
 
 
-def checkInput(arguments):
+def check_input(arguments):
     arguments_length = len(arguments)
     prompt = ""
     if(arguments_length == 1 or arguments_length > 2):
