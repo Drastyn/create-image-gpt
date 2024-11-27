@@ -2,8 +2,10 @@ from openai import OpenAI
 from os import path, getenv
 import sys, subprocess
 
+
 client = OpenAI()
 IMAGE_NAME = getenv("IMAGE_NAME")
+
 
 def main():
     prompt = check_input(sys.argv)
